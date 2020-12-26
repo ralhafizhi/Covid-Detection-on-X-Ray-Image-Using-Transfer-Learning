@@ -1,0 +1,42 @@
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="/"></a>
+            <img src="{{url_for('static', filename='images/logo/logo-4-02-02.png')}}" width="50" height="50" />
+            <span style="color :darkgrey">Deteksi Covid-19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/">Beranda</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('profil') }}">Profil</a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('data') }}">Datasets</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('prosedur') }}">Prosedur Penelitian</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('model') }}">Model</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('prediksi') }}">Prediksi</a>
+                </li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>

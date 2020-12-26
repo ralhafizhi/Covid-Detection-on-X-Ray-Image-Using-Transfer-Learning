@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block title %} Beranda {% endblock %}
+
+{% block body %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron"
+    style="width: 1343px; height: 450px; margin-left: 2pt; background-image: url({{url_for('static', filename='images/home/12466.jpg')}});">
+    <div class="container">
+
+        <h1>Selamat Datang di - </h1>
+        <h2 style="text-shadow: 0.5px 0px;">Teknik Informatika, Fakultas Teknik dan Sains, Universitas Ibn Khaldun Bogor
+        </h2>
+        <blockquote style="text-align: justify; text-shadow: 0.5px 0px;">
+            <h2>
+                <b>
+                    Deteksi <i>Coronavirus Disease</i> (Covid-19) Pada <i>X-Ray</i> dan <i>CT-Scan</i> Paru
+                    Menggunakan
+                    <i>Deep
+                        Learning</i> Dengan
+                    Algoritma
+                    <i>Deep
+                        Convolutional Neural Network </i>
+                </b>
+            </h2>
+        </blockquote>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Deep Learning Framework by -
+            <b>PyTorch</b></a>
+        </p>
+    </div>
+    <br>
+</div>
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Citra <i>CT-Scan</i></h2>
+            <p></p><img src="{{url_for('static', filename='images/home/1238.png')}}" width="224" height="224" /></p>
+            <p>
+                <a class="btn btn-default" href="{{ url_for('data') }}" role="button">Selengkapnya &raquo;</a>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Citra <i>X-Ray</i></h2>
+            <p></p><img src="{{url_for('static', filename='images/home/8.jpeg')}}" width="224" height="224" /></p>
+            <p>
+                <a class="btn btn-default" href="{{ url_for('data') }}" role="button">Selengkapnya &raquo;</a>
+        </div>
+        <div class="col-md-4">
+            <h2>Arsitektur Model DCNN</h2>
+            <p></p><img src="{{url_for('static', filename='images/arsitektur/arsitektur_2.png')}}" width="420"
+                height="215" /></p>
+            <p>
+                <a class="btn btn-default" href="{{ url_for('model') }}" role="button">Selengkapnya &raquo;</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% include 'includes/footer.html' %}
+{% endblock %}

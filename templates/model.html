@@ -1,0 +1,92 @@
+<style>
+    {
+        box-sizing: border-box;
+    }
+
+    .zoom {
+        background-color: black;
+        transition: transform .7s;
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    .zoom:hover {
+        -ms-transform: scale(1.5);
+        /* IE 9 */
+        -webkit-transform: scale(1.5);
+        /* Safari 3-8 */
+        transform: scale(1.5);
+    }
+</style>
+
+{% extends 'layout.html' %}
+
+{% block title %} Kinerja dan Visualisasi Model{% endblock %}
+
+{% block body %}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1 style="text-align: center;">Kinerja (Performa) dan Visualisasi Model</h1>
+                <hr>
+                <p></p><img src="{{url_for('static', filename='images/arsitektur/arsitektur_2.png')}}" width="100%" />
+                </p>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 style="text-align: center;">Accuracy<i>Training</i> vs <i>Testing</i></h3>
+                        <p></p><img src="{{url_for('static', filename='images/plot-model/early_stop_score_fix.png')}}"
+                            width="85%" class="zoom" />
+                        </p>
+                    </div>
+
+                    <div class=" col-md-6">
+                        <h3 style="text-align: center;">Cost <i>Training</i> vs <i>Testing</i></h3>
+                        <p></p><img src="{{url_for('static', filename='images/plot-model/early_stop_cost_fix.png')}}"
+                            width="85%" class="zoom" />
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p></p><img src="{{url_for('static', filename='images/plot-model/plot_cm_train.png')}}"
+                            width="85%" class="zoom" /></p>
+                    </div>
+
+                    <div class=" col-md-6">
+                        <p></p><img src="{{url_for('static', filename='images/plot-model/plot_cm_test.png')}}"
+                            width="85%" class="zoom" /></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <h3 style="text-align: center;">ROC/AUC Curve</h3>
+                    <div class="col-md-4">
+
+                        <p></p><img src="{{url_for('static', filename='images/plot-model/roc_class_0.png')}}"
+                            width="85%" class="zoom" /></p>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <p></p><img src="{{url_for('static', filename='images/plot-model/roc_class_1.png')}}"
+                            width="85%" class="zoom" /></p>
+                    </div>
+                    <div class=" col-md-4">
+                        <p></p><img src="{{url_for('static', filename='images/plot-model/roc_class_2.png')}}"
+                            width="85%" class="zoom" />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /.container -->
+{% include 'includes/footer.html' %}
+{% endblock %}

@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/bar-chart-data.css') }}">
+{% extends 'layout.html' %}
+
+{% block title %} Datasets {% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3 style="text-align: center;">Distribusi <i>Datasets</i> Citra <i>Training </i><i>X-Ray</i> atau
+                    <i>CT-Scan</i>
+                    Paru
+                </h3>
+                <div class="col-md-12">
+                    <hr /><br><br>
+                    <table class="graph col-md-12">
+                        <tbody>
+                            <tr style="height:123.5%">
+                                <th scope="row">Covid-19 (1235)</th>
+                                <td><span>1235</span></td>
+                            </tr>
+                            <tr style="height:125.5%">
+                                <th scope="row">Normal (1255)</th>
+                                <td><span>1255</span></td>
+                            </tr>
+                            <tr style="height:130.0%">
+                                <th scope="row">Pneumonia (1300)</th>
+                                <td><span>1300</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br><br><br><br><br><br><br><br><br><br>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3 style="text-align: center;">Distribusi <i>Datasets</i> Citra <i>Testing </i><i>X-Ray</i> atau
+                    <i>CT-Scan</i>
+                    Paru
+                </h3>
+                <div class="col-md-12">
+                    <hr /><br><br>
+                    <table class="graph col-md-12">
+                        <tbody>
+                            <tr style="height:42.7%">
+                                <th scope="row">Covid-19 (427)</th>
+                                <td><span>427</span></td>
+                            </tr>
+                            <tr style="height:43.1%">
+                                <th scope="row">Normal (431)</th>
+                                <td><span>431</span></td>
+                            </tr>
+                            <tr style="height:42.6%">
+                                <th scope="row">Pneumonia (426)</th>
+                                <td><span>426</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br><br><br><br><br><br><br><br><br><br>
+        </div>
+    </div>
+</div>
+
+<!-- /.container -->
+{% include 'includes/footer.html' %}
+{% endblock %}

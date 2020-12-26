@@ -1,0 +1,100 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% extends 'layout.html' %}
+
+{% block title %} Profil {% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6" style="margin-left: 8cm;">
+            <div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <h3 style="text-align: center;">Profil - <i>Created by</i>
+                        </h3>
+                        <hr />
+                        <div class="card">
+                            <img src="{{url_for('static', filename='images/profil/IMG_20200608_104455.jpg')}}"
+                                alt="Ridho Alhafizhi" style="width:100%">
+                            <h1 style="text-align: center;">Muhammad Ridho Fauzi</h1>
+                            <h4 style="text-align: center;">Teknik Informatika</h4>
+                            <h4 style="text-align: center;">Universitas Ibn Khaldun Bogor</h4>
+                            <a href="https://instagram.com/ralhafizhi_"><i class="fa fa-instagram fa-2x"
+                                    style="margin-left: 5cm; margin-top: 1cm;"></i></a>&nbsp;
+                            <a href="https://api.whatsapp.com/send?phone=+6288212558176"><i
+                                    class="fa fa-whatsapp fa-2x"></i></a>&nbsp;
+                            <a href="mailto:ralhafizhi@gmail.com"><i class="fa fa-envelope fa-2x"></i></a>&nbsp;
+                            <a href="https://github.com/alhafizhir"><i class="fa fa-github fa-2x"></i></a>&nbsp;
+                            <a href="https://www.facebook.com/ridhonesboer/"><i
+                                    class="fa fa-facebook fa-2x"></i></a><br><br>
+                            <p style="background-color: black; width: 14cm; height: 30px;"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <h3 style="text-align: center;">Profil - Pembimbing Utama
+                        </h3>
+                        <hr />
+                        <div class="card">
+                            <img src="{{url_for('static', filename='images/profil/5ded361a-c777-4b8b-92ef-85d74111a3e8 copy.jpg')}}"
+                                alt="Puspa Eosina, S.Si., M.Kom." style="width:161; height: 214; margin-left: 5cm;">
+                            <h1 style="text-align: center;">Puspa Eosina, S.Si., M.Kom.</h1>
+                            <h4 style="text-align: center;">Teknik Informatika</h4>
+                            <h4 style="text-align: center;">Universitas Ibn Khaldun Bogor</h4>
+                            <a href=" #"><i class="fa fa-instagram fa-2x"
+                                    style="margin-left: 5cm; margin-top: 1cm;"></i></a>&nbsp;
+                            <a href="#"><i class="fa fa-whatsapp fa-2x"></i></a>&nbsp;
+                            <a href="#"><i class="fa fa-envelope fa-2x"></i></a>&nbsp;
+                            <a href="#"><i class="fa fa-github fa-2x"></i></a>&nbsp;
+                            <a href="#"><i class="fa fa-facebook fa-2x"></i></a><br><br>
+                            <p style="background-color: black; width: 14cm; height: 30px;"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <h3 style="text-align: center;">Profil - Pembimbing Pendamping
+                        </h3>
+                        <hr />
+                        <div class="card">
+                            <img src="{{url_for('static', filename='images/profil/5_Dewi_Primasari.jpg')}}"
+                                alt="Dewi Primasari, S.Si., MM." style="width:161; height: 214; margin-left: 5cm;">
+                            <h1 style=" text-align: center;">Dewi Primasari, S.Si., MM.</h1>
+                            <h4 style="text-align: center;">Teknik Informatika</h4>
+                            <h4 style="text-align: center;">Universitas Ibn Khaldun Bogor</h4>
+                            <a href=" #"><i class="fa fa-instagram fa-2x"
+                                    style="margin-left: 5cm; margin-top: 1cm;"></i></a>&nbsp;
+                            <a href="#"><i class="fa fa-whatsapp fa-2x"></i></a>&nbsp;
+                            <a href="#"><i class="fa fa-envelope fa-2x"></i></a>&nbsp;
+                            <a href="#"><i class="fa fa-github fa-2x"></i></a>&nbsp;
+                            <a href="#"><i class="fa fa-facebook fa-2x"></i></a><br><br>
+                            <p style="background-color: black; width: 14cm; height: 30px;"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- /.container -->
+{% include 'includes/footer.html' %}
+{% endblock %}

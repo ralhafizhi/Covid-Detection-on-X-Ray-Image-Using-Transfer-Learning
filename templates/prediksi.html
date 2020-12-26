@@ -1,0 +1,204 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/bar-chart.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    {
+        box-sizing: border-box;
+    }
+
+    .zoom {
+        background-image: url("{{url_for('static', filename='images/logo/3704689.jpg')}}");
+        transition: transform .7s;
+        width: 460px;
+        height: 370px;
+        margin: 0 auto;
+    }
+
+    .zoom:hover {
+        -ms-transform: scale(1.5);
+        /* IE 9 */
+        -webkit-transform: scale(1.5);
+        /* Safari 3-8 */
+        transform: scale(1.5);
+    }
+</style>
+
+{% extends 'layout.html' %}
+
+{% block title %} Prediksi {% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="well well-sm">
+                <!-- form input -->
+                <form class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit="return cekform();">
+                    <fieldset>
+                        <legend class="text-center header">Upload Citra <i>X-Ray</i> atau <i>CT-Scan</i> Paru-Paru
+                        </legend>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <p><input type="file" accept="image/*" name="file" id="file" onchange="loadFile(event)"
+                                        class="form-control" required></p>
+                                <center><img id="output" width="70%" /></center>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                                <hr>
+                                <button type='submit' class="btn btn-primary btn-lg btn-app radius-4">
+                                    <i class="fa fa-cogs"></i>
+                                    Prediksi
+                                </button>
+
+                                <button type="reset" class="btn btn-danger btn-lg btn-app radius-4"
+                                    onclick="location.href='{{ prediksi }}'">
+                                    <i class="ace-icon glyphicon  glyphicon-refresh"></i>
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- end form input -->
+
+            <!-- tabel probabilitas prediksi -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3 style="text-align: center;">Tabel Probabilitas Prediksi<br> Citra <i>X-Ray</i> atau
+                        <i>CT-Scan</i>
+                        Paru</h3>
+                    <hr />
+                    <table width="100%" height="220px" cellspacing="50%">
+                        <tr style="background-color: lightgray;">
+                            <td style="text-align: center; font-weight: bold;">NO</td>
+                            <td style="text-align: center; font-weight: bold;">KELAS PREDIKSI</td>
+                            <td style="text-align: center; font-weight: bold;">PROBABILITAS (%)</td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: center;">1</td>
+                            <td style="text-align: center;">{{classes0}}</td>
+                            <td style="text-align: center;">{{prob0}}</td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: center;">2</td>
+                            <td style="text-align: center;">{{classes1}}</td>
+                            <td style="text-align: center;">{{prob1}}</td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: center;">3</td>
+                            <td style="text-align: center;">{{classes2}}</td>
+                            <td style="text-align: center;">{{prob2}}</td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: center; font-weight: bold; background-color: lightgray;" colspan="2">
+                                TOTAL</td>
+                            <td style="text-align: center; font-weight: bold;">{{total}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <br><br><br>
+            </div>
+        </div>
+        <!-- end tabel probabilitas prediksi -->
+
+        <!-- Image X-Ray/CT-Scan -->
+        <div class="col-md-6">
+            <div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <h3 style="text-align: center;">Citra <i>Input</i> <i>X-Ray</i> atau <i>CT-Scan</i> Paru</h3>
+                        <hr />
+                        <center>
+
+                            <img src={{image_location}} width="460" height="377" class="zoom"
+                                alt="Citra X-Ray atau CT-Scan" style=" color: seashell; background-clip: padding-box;">
+                        </center>
+                        <hr>
+                        <!-- end Image X-Ray/CT-Scan -->
+
+                        <!-- hasil prediksi -->
+                        <h3 style="text-align: center;">Hasil Prediksi Citra <i>X-Ray</i> atau <i>CT-Scan</i> Paru</h3>
+                        <hr />
+                        <div>
+                            <h4 style="margin-top: 20pt;">Berdasarkan model <i>Deep Convolutional Neural Network</i>
+                                yang
+                                dibangun.
+                                Hasil
+                                prediksi citra
+                                <i>X-Ray</i> atau <i>CT-Scan</i> paru-paru, menunjukkan bahwa pada
+                                paru-paru
+                                anda terdeteksi
+                                <b><u>{{ labels }}</b></u>
+                                dengan tingkat
+                                probabilitas sebesar
+                                <b><u>{{ probs }}</u> (%)</b>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end hasil prediksi -->
+
+    <!-- grafik prediksi -->
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h3 style="text-align: center;">Grafik Probabilitas Prediksi Citra <i>X-Ray</i> atau <i>CT-Scan</i>
+                Paru
+            </h3>
+            <div class="col-md-12">
+                <hr /><br><br>
+                <table class="graph col-md-12">
+                    <tbody>
+                        <tr style="height:{{prob0}}%">
+                            <th scope="row">{{classes0}}</th>
+                            <td><span>{{prob0}}%</span></td>
+                        </tr>
+                        <tr style="height:{{prob1}}%">
+                            <th scope="row">{{classes1}}</th>
+                            <td><span>{{prob1}}%</span></td>
+                        </tr>
+                        <tr style="height:{{prob2}}%">
+                            <th scope="row">{{classes2}}</th>
+                            <td><span>{{prob2}}%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br><br><br><br><br><br>
+    </div>
+</div>
+<!-- end grafik prediksi -->
+
+
+<!-- javascript -->
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+
+    $('.btn').on('click', function () {
+        var $this = $(this);
+        $this.button('loading');
+        setTimeout(function () {
+            $this.button('reset');
+        }, 20000);
+    });
+</script>
+<!-- end javascript -->
+
+{% include 'includes/footer.html' %}
+{% endblock %}
