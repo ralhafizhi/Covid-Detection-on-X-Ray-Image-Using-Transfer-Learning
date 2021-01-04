@@ -1,5 +1,5 @@
 pip
-python==3.6.12
+python
 scikit-optimize==0.7.4
 jcopml==1.1.7
 jcopdl==1.1.1
